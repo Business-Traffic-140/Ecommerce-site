@@ -1,0 +1,156 @@
+* {
+    margin: 0%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: none;
+}
+
+.body {
+    padding: 0%;
+}
+
+/* NAVBAR Starts */
+
+.navbar {
+    width: 100%;
+    height: 50%;
+    font-weight: bold;
+    gap: 1rem;    
+}
+
+.button {
+    display: flex;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    margin: 1rem;
+    gap: 1rem;  
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.buttons:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0cf;
+  border-radius: 10rem;
+  z-index: -2;
+}
+
+.buttons:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgb(31, 165, 199);
+  transition: all 0.3s;
+  border-radius: 10rem;
+  z-index: -1;
+}
+
+.buttons:hover {
+  color: #fff;
+}
+
+.button a {
+
+  /* This overrides the browser's default red color for the active state */
+  color: white !important;
+
+}
+.buttons:hover:before {
+  width: 100%;
+}
+
+.logo_img {
+    height: 35px; /* Adjust height as needed for your navbar */
+    width: auto; /* Maintain the logo's aspect ratio */
+    display: block; /* Helps remove default spacing issues */
+    /* You may need to adjust the margin/padding of the parent .buttons class */
+    margin-right: 2%;
+}
+
+ .logo_link {
+  margin-right: 10%;
+ }
+
+/* NAVBAR ENDS */
+
+/* MAINBODY STARTS */
+
+.mainbody {
+  width: 100%;
+}
+
+/* MAINBODY ENDS */
+
+/* --- FOOTER STYLES --- */
+
+.main-footer {
+    /* Set the same background color as your buttons' base background (#0cf) */
+    position: fixed;
+    background-color: #0cf; 
+    width: 100%;
+    padding: 2rem 0; /* Add vertical padding for height */
+    margin-top: 5rem; /* Add some separation from the main content */
+    
+    /* Center the footer content horizontally */
+    display: flex;
+    justify-content: center;
+}
+
+.footer-content {
+    width: 90%; /* Constrain the width for better readability */
+    max-width: 1200px; /* Optional: Sets a maximum width */
+    display: flex;
+    flex-direction: column; /* Stack the content vertically */
+    align-items: center; /* Center items along the cross-axis (horizontally) */
+    text-align: center;
+}
+
+.footer-copyright {
+    /* Inherits font from the global selector */
+    color: #fff; 
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    /* Use flexbox to space the footer links */
+    display: flex;
+    gap: 1.5rem; /* Space between the links */
+}
+
+.footer-link-item {
+    /* Inherits font-family from the global selector */
+    color: #fff; 
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-link-item:hover {
+    /* Use the darker hover color (rgb(31, 165, 199)) from your buttons */
+    color: rgb(31, 165, 199); 
+}
+
