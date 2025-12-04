@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Responsive Navbar with Hamburger Menu</title>
+    
+    <!-- CSS STYLES GO HERE -->
+
+</head>
+<body class="min-h-screen">
+
+    <!-- Navbar Container -->
+    <header class="navbar">
+        <!-- .button container acts as the main row using Flexbox -->
+        <div class="button">
+            
+            <!-- 1. The Logo/Country Group (Aligned Left) -->
+            <div class="logo-country-group">
+                <!-- World Icon Button -->
+                <a href="#" class="logo_link btn-effect">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo_img">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"/>
+                        <path d="M12 2a10 10 0 0 1 10 10"/>
+                        <path d="M2 12h20"/>
+                        <path d="M12 2a10 10 0 0 0-10 10"/>
+                        <path d="M12 2a10 10 0 0 0 10 10"/>
+                        <path d="M12 22a10 10 0 0 0 10-10"/>
+                        <path d="M12 22a10 10 0 0 1-10-10"/>
+                    </svg>
+                </a>
+                
+            </div>
+            
+            <!-- 2. Desktop Navigation Links (Visible only on screens > 500px) -->
+            <nav class="desktop-nav">
+                <a href="#" class="btn-effect px-5 py-3">ABOUT</a>
+                <a href="#" class="btn-effect px-5 py-3">SEARCH</a>
+                <a href="#" class="btn-effect px-5 py-3">CONTACT</a>
+                
+                <!-- Country Dropdown (Desktop) -->
+                <div class="dropdown-container">
+                    <a href="#" class="btn-effect dropdown-toggle">
+                        Select Country
+                        <!-- Dropdown arrow SVG -->
+                        <svg class="dropdown-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><img src="https://placehold.co/18x12/0cf/ffffff?text=FR" alt="Flag of France"> France</a></li>
+                        <li><a href="#"><img src="https://placehold.co/18x12/0cf/ffffff?text=DE" alt="Flag of Germany"> Germany</a></li>
+                        <li><a href="#"><img src="https://placehold.co/18x12/0cf/ffffff?text=US" alt="Flag of United States"> United States</a></li>
+                    </ul>
+                </div>
+
+            </nav>
+
+            <!-- 3. Hamburger Icon (Visible only on screens <= 500px) -->
+            <div class="hamburger-icon" id="hamburger-btn">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu">
+        <nav class="mobile-nav-links">
+            <!-- Standard Mobile links -->
+            <a href="#" class="btn-effect my-2">ABOUT</a>
+            <a href="#" class="btn-effect my-2">SEARCH</a>
+            <a href="#" class="btn-effect my-2">CONTACT</a>
+
+            <!-- Mobile Country Dropdown Toggle -->
+            <div id="mobile-country-toggle" class="mobile-country-toggle btn-effect">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-img">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"/>
+                    <path d="M12 2a10 10 0 0 1 10 10"/>
+                    <path d="M2 12h20"/>
+                    <path d="M12 2a10 10 0 0 0-10 10"/>
+                    <path d="M12 2a10 10 0 0 0 10 10"/>
+                    <path d="M12 22a10 10 0 0 0 10-10"/>
+                    <path d="M12 22a10 10 0 0 1-10-10"/>
+                </svg>
+                <span class="font-bold">Select Country</span>
+            </div>
+            
+            <!-- Mobile Country Menu (Hidden by default) -->
+            <ul id="mobile-country-menu">
+                <li><a href="#"><img src="https://placehold.co/18x12/0cf/ffffff?text=FR" alt="Flag of France"> France</a></li>
+                <li><a href="#"><img src="https://placehold.co/18x12/0cf/ffffff?text=DE" alt="Flag of Germany"> Germany</a></li>
+                <li><a href="#"><img src="https://placehold.co/18x12/0cf/ffffff?text=US" alt="Flag of United States"> United States</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content Body -->
+    <div class="mainbody">
+        <h1>Welcome to the Website!</h1>
+        <p>Resize the browser window to see the navigation transform into a dropdown hamburger menu when the width is 500 pixels or less.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p class="footer-copyright">&copy; 2025 Website Buy. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link-item">Privacy Policy</a>
+                <a href="#" class="footer-link-item">Terms of Service</a>
+                <a href="#" class="footer-link-item">Social Link</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC GOES HERE -->
+
+</body>
+<script src="script.js">  </script>
+
+</html>
+
+
+

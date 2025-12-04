@@ -1,0 +1,388 @@
+
+        /* Global Reset and Base Styles */
+        body {
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: #f9fafb; /* bg-gray-50 */
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ---------------------------------------------------- */
+        /* Custom Button Effects */
+        /* ---------------------------------------------------- */
+
+        /* Base colors */
+        .btn-bg-base { background-color: #0cf; }
+        .btn-bg-hover { background-color: rgb(31, 165, 199); }
+
+        .btn-effect {
+            /* Text/link styling */
+            text-decoration: none;
+            color: #fff !important; 
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em; /* tracking-wider */
+            font-size: 0.875rem; /* text-sm */
+
+            /* Layout and visual styles */
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s;
+            cursor: pointer;
+            border-radius: 10rem; /* Highly rounded corners for buttons */
+            padding: 0.75rem 1.25rem;
+            
+            /* Required for containing the pseudo-elements */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Base background layer (the light blue) */
+        .btn-effect::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0cf;
+            border-radius: 10rem;
+            z-index: -2;
+        }
+
+        /* Hover effect layer (the darker blue) */
+        .btn-effect::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: rgb(31, 165, 199);
+            transition: all 0.3s;
+            border-radius: 10rem;
+            z-index: -1;
+        }
+
+        /* Expand the dark blue layer on hover */
+        .btn-effect:hover::before {
+            width: 100%;
+        }
+
+        /* Specific styling for the Globe Icon Button to make it perfectly circular/square */
+        .logo_link {
+            padding: 0.5rem; /* Reduced padding for the icon button */
+            width: 2.5rem; /* Fixed width */
+            height: 2.5rem; /* Fixed height (must match width for square/circle) */
+            flex-shrink: 0; /* Prevents it from shrinking under flex constraints */
+        }
+        .logo_link::after, .logo_link::before {
+            border-radius: 50%; /* Make background layers circular */
+        }
+
+
+        /* ---------------------------------------------------- */
+        /* Navbar Layout (Mobile First) */
+        /* ---------------------------------------------------- */
+
+        .navbar {
+            background-color: white; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); 
+            padding: 0.5rem;
+            width: 100%;
+        }
+
+        /* .button container acts as the main row */
+        .button {
+            display: flex;
+            justify-content: flex-end; /* Default: Push to right */
+            align-items: center;
+            gap: 1rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            box-sizing: border-box;
+        }
+
+        .logo-country-group {
+            display: flex;
+            align-items: left;
+            gap: 0.5rem;
+            margin-right: auto; /* Pushes group to the far left */
+        }
+
+        /* Logo SVG Styling */
+        .logo_img {
+            height: 1.5rem; /* h-6, slightly smaller than container */
+            width: 1.5rem; /* w-6 */
+            display: block;
+            color: white; /* Color the SVG white */
+        }
+
+        /* Desktop navigation is hidden by default (Mobile First) */
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* The country selector button (now part of dropdown) is hidden on mobile screens */
+        .country-selector-btn {
+            display: none; 
+            padding-left: 0.75rem; /* px-3 */
+            padding-right: 0.75rem; /* px-3 */
+            padding-top: 0.5rem; /* py-2 */
+            padding-bottom: 0.5rem; /* py-2 */
+            font-size: 0.875rem;
+        }
+
+        /* ---------------------------------------------------- */
+        /* DROPDOWN STYLES (Desktop) */
+        /* ---------------------------------------------------- */
+        .dropdown-container {
+            position: relative; 
+            display: none; 
+            z-index: 20; 
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.2s;
+        }
+
+        .dropdown-toggle.open .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0.5rem 0;
+            position: absolute;
+            top: 100%; 
+            right: 0; 
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            min-width: 12rem;
+            visibility: hidden; 
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .dropdown-menu.visible {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: #1f2937 !important; /* Dark text */
+            font-weight: normal;
+            text-transform: none;
+            font-size: 1rem;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #f3f4f6; /* Light gray hover */
+            color: #0cf !important;
+        }
+
+        .dropdown-menu li img {
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            width: 1.125rem; /* 18px */
+            height: 0.75rem; /* 12px */
+            object-fit: cover;
+        }
+
+        /* ---------------------------------------------------- */
+        /* Hamburger Icon Styling */
+        /* ---------------------------------------------------- */
+
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 9999px; /* Full rounded like the buttons */
+            background-color: #3b82f6; 
+            z-index: 10;
+        }
+
+        .line {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger-icon.open .line:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger-icon.open .line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-icon.open .line:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* ---------------------------------------------------- */
+        /* Mobile Dropdown Menu Styling */
+        /* ---------------------------------------------------- */
+
+        #mobile-menu {
+            position: absolute;
+            top: 60px; /* Adjust based on navbar height */
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(31, 165, 199, 0.95);
+            z-index: 5;
+            transform: translateX(100%); 
+            transition: transform 0.3s ease-in-out;
+            padding-top: 2rem;
+            
+            /* Hidden by default in desktop view via media query */
+            display: block; 
+        }
+
+        #mobile-menu.active {
+            transform: translateX(0); 
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        /* Style for mobile menu links */
+        #mobile-menu .btn-effect {
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 0.5rem; /* my-2 */
+            margin-bottom: 0.5rem; /* my-2 */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            /* Reset specific btn-effect styles that look bad at 1.5rem size */
+            font-size: 1.5rem; 
+            font-weight: normal; 
+            letter-spacing: normal;
+        }
+
+        #mobile-menu a:hover {
+            background-color: rgb(31, 165, 199);
+        }
+
+        /* Mobile Country Dropdown Toggle */
+        .mobile-country-toggle {
+            /* .country-btn styles are applied directly to this div */
+            border: 2px solid white;
+            width: 75%;
+            margin-left: auto;
+            margin-right: auto;
+            cursor: pointer;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1.5rem; /* Match other menu links */
+        }
+
+        .mobile-country-toggle .logo-img {
+            height: 30px;
+        }
+
+        #mobile-country-menu {
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+            background-color: rgba(0,0,0,0.1); 
+            display: none;
+            border-radius: 0.5rem;
+            margin: 1rem auto;
+            width: 75%;
+        }
+
+        #mobile-country-menu li a {
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-bottom: none; 
+            background: none !important; 
+            color: white;
+            padding: 0.75rem 0;
+            font-size: 1.2rem;
+        }
+
+        #mobile-country-menu li img {
+            margin-right: 0.5rem; 
+            border: 1px solid #ccc; 
+            border-radius: 2px;
+            width: 1.125rem; 
+            height: 0.75rem;
+            object-fit: cover;
+        }
+
+
+        /* ---------------------------------------------------- */
+        /* Desktop Styles (Media Query: Screen width > 500px) */
+        /* ---------------------------------------------------- */
+        @media (min-width: 501px) {
+            /* Hide the hamburger icon and mobile menu */
+            .hamburger-icon {
+                display: none;
+            }
+            #mobile-menu {
+                display: none !important; /* Force hide the mobile menu */
+            }
+
+            /* Show the desktop navigation and dropdown container */
+            .desktop-nav {
+                display: flex;
+            }
+            .dropdown-container {
+                display: block;
+            }
+            
+            /* Ensure the desktop layout is centered/aligned to the right (as per original intent) */
+
+
+        /* ---------------------------------------------------- */
+        /* Footer Styles (Unchanged) */
+        /* ---------------------------------------------------- */
+        .mainbody { 
+            padding: 2rem; 
+            padding-bottom: 7rem; /* Ensure space above the fixed footer */
+        }
+        .mainbody h1 { font-size: 1.5rem; font-weight: 600; color: #1f2937; }
+        .mainbody p { margin-top: 1rem; color: #4b5563; }
+        .main-footer { position: fixed; bottom: 0; width: 100%; background-color: #0cf; padding: 1rem 0; }
+        .footer-content { max-width: 1280px; margin: 0 auto; padding: 0 1rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        @media (min-width: 768px) { .footer-content { flex-direction: row; justify-content: space-between; } }
+        .footer-copyright { color: #fff; font-size: 0.875rem; margin-bottom: 0.5rem; }
+        @media (min-width: 768px) { .footer-copyright { margin-bottom: 0; } }
+        .footer-links { display: flex; gap: 1rem; }
+        .footer-link-item { color: #fff; text-decoration: none; text-transform: uppercase; font-weight: bold; font-size: 0.875rem; transition: color 0.3s; }
+        .footer-link-item:hover { color: rgb(31, 165, 199); }}
