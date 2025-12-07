@@ -357,7 +357,7 @@
         /* ---------------------------------------------------- */
         /* Desktop Styles (Media Query: Screen width > 500px) */
         /* ---------------------------------------------------- */
-        @media (min-width: 501px) {
+        @media (min-width: 768px) {
             /* Hide the hamburger icon and mobile menu */
             .hamburger-icon {
                 display: none;
@@ -396,6 +396,7 @@
             text-align: center; 
             justify-content: center;
             align-items: center; 
+            z-index: 10;
         }
             
 
@@ -406,7 +407,7 @@
             display: flex; 
             flex-direction: column;
             justify-content: center;
-            align-items: center;    
+            align-items: center;   
             text-align: center;
             gap: 0.5rem; 
         }
